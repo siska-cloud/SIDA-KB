@@ -1,0 +1,21 @@
+# =========================================================================
+# KONFIGURASI APACHE (.htaccess) - SIDA-KB (PHP NATIVE)
+# Kompatibel untuk InfinityFree, cPanel, Laragon, dan XAMPP
+# =========================================================================
+
+# Tetapkan index.php sebagai file utama yang dibuka
+DirectoryIndex index.php
+
+# Matikan directory browsing (mencegah pengunjung melihat daftar file folder)
+Options -Indexes
+
+# Set default encoding ke UTF-8
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Keamanan: Blokir akses langsung ke file backup database (.sql) dan file panduan (.md)
+    RewriteRule \.(sql|md|log)$ - [F,L]
+</IfModule>
+
